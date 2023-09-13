@@ -150,11 +150,8 @@ public class JF_Manager_Home extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        sp_Report_Result = new javax.swing.JScrollPane();
+        tbl_Report_Results = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -1716,41 +1713,33 @@ public class JF_Manager_Home extends javax.swing.JFrame {
         pnl_Report_Content.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.magenta, null));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("condition 1");
+        jButton1.setText("Low Quantity");
+        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(51, 0, 51)));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("condition 2");
+        jButton2.setText("Search Employee");
+        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(51, 0, 51)));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("jButton3");
+        jButton3.setText("Custom Report");
+        jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(51, 0, 51)));
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("jButton4");
-
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("jButton5");
-
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("jButton6");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Report_Results.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_Report_Results.setShowGrid(true);
+        sp_Report_Result.setViewportView(tbl_Report_Results);
 
         javax.swing.GroupLayout pnl_Report_ContentLayout = new javax.swing.GroupLayout(pnl_Report_Content);
         pnl_Report_Content.setLayout(pnl_Report_ContentLayout);
@@ -1758,23 +1747,15 @@ public class JF_Manager_Home extends javax.swing.JFrame {
             pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
                 .addGap(95, 95, 95)
-                .addGroup(pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(306, 306, 306)
-                        .addComponent(jButton5))
-                    .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(306, 306, 306)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                .addGroup(pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6))
-                .addGap(107, 107, 107))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_Report_ContentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(sp_Report_Result, javax.swing.GroupLayout.DEFAULT_SIZE, 958, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         pnl_Report_ContentLayout.setVerticalGroup(
@@ -1782,17 +1763,12 @@ public class JF_Manager_Home extends javax.swing.JFrame {
             .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addGroup(pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(112, 112, 112)
-                .addGroup(pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(sp_Report_Result, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnl_ReportLayout = new javax.swing.GroupLayout(pnl_Report);
@@ -2776,11 +2752,6 @@ public class JF_Manager_Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_Add_Stock;
     private javax.swing.JLabel lbl_Add_Supplier;
     private javax.swing.JLabel lbl_Existing_Stock_Display;
@@ -2860,9 +2831,11 @@ public class JF_Manager_Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane sp_New_Suppliers;
     private javax.swing.JScrollPane sp_Remove_Suppliers;
     private javax.swing.JScrollPane sp_Remove_Suppliers1;
+    private javax.swing.JScrollPane sp_Report_Result;
     private javax.swing.JScrollPane sp_Stock_Available;
     private javax.swing.JSpinner spn_New_Product_Quantity;
     private javax.swing.JTable tbl_Existing_Stock;
+    private javax.swing.JTable tbl_Report_Results;
     private javax.swing.JTable tbl_Stock_Available;
     private javax.swing.JTable tbl_Suppliers;
     private javax.swing.JTabbedPane tpnl_Add_Stock;
