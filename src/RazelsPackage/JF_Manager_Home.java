@@ -4,6 +4,7 @@
  */
 package RazelsPackage;
 
+import Report.Report;
 import javax.swing.JOptionPane;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
@@ -147,7 +148,7 @@ public class JF_Manager_Home extends javax.swing.JFrame {
         btn_Update_Supplier = new javax.swing.JButton();
         pnl_Report = new javax.swing.JPanel();
         pnl_Report_Content = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btn_Low_Quantity_Products = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         sp_Report_Result = new javax.swing.JScrollPane();
@@ -1712,11 +1713,16 @@ public class JF_Manager_Home extends javax.swing.JFrame {
         pnl_Report_Content.setBackground(new java.awt.Color(153, 0, 102));
         pnl_Report_Content.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.magenta, null));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Low Quantity");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(51, 0, 51)));
+        btn_Low_Quantity_Products.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Low_Quantity_Products.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_Low_Quantity_Products.setForeground(new java.awt.Color(255, 255, 255));
+        btn_Low_Quantity_Products.setText("Low Quantity");
+        btn_Low_Quantity_Products.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(51, 0, 51)));
+        btn_Low_Quantity_Products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Low_Quantity_ProductsActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -1747,7 +1753,7 @@ public class JF_Manager_Home extends javax.swing.JFrame {
             pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
                 .addGap(95, 95, 95)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Low_Quantity_Products, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1763,7 +1769,7 @@ public class JF_Manager_Home extends javax.swing.JFrame {
             .addGroup(pnl_Report_ContentLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addGroup(pnl_Report_ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Low_Quantity_Products, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
@@ -2685,6 +2691,26 @@ public class JF_Manager_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_Update_SupplierActionPerformed
 
+    private void btn_Low_Quantity_ProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Low_Quantity_ProductsActionPerformed
+        // TODO add your handling code here:
+        tbl_Report_Results.setModel(new DefaultTableModel());
+        ArrayList<Object> queryResults = new Report().getLowQuanProducts(btn_Low_Quantity_Products.getParent());
+        if (queryResults != null){
+            DefaultTableModel tblReport = (DefaultTableModel)tbl_Report_Results.getModel();
+            tblReport.addColumn("Product");
+            tblReport.addColumn("Quantity Remaining");
+            tblReport.addColumn("Supplier");
+            for (Object n : queryResults){
+                Object[] c = (Object[]) n;
+                tblReport.addRow(c);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(btn_Low_Quantity_Products.getParent(),"Please Enter Required Details","INVALID SUBMISSION",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btn_Low_Quantity_ProductsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2722,6 +2748,7 @@ public class JF_Manager_Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Clear;
+    private javax.swing.JButton btn_Low_Quantity_Products;
     private javax.swing.JButton btn_New_Stock_Clear;
     private javax.swing.JButton btn_New_Stock_Save;
     private javax.swing.JButton btn_Remove;
@@ -2749,7 +2776,6 @@ public class JF_Manager_Home extends javax.swing.JFrame {
     private javax.swing.JTextField edt_Surname;
     private javax.swing.JTextField edt_Update_Id_Number;
     private javax.swing.JTextField edt_Update_Supplier_Name;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel lbl_Add_Stock;

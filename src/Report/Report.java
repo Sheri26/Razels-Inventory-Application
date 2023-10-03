@@ -33,13 +33,19 @@ public class Report implements Database {
     }
     
     
-    public ArrayList<Object> getLowQuanProducts(Component pComp){
+    public ArrayList<Object> getLowQuanProducts(Component pComp) throws NumberFormatException{
         int minQuantity = 0;
+        //String rsp = null;
         con = createConnection();
         ArrayList<Object> result = null;
-        minQuantity = Integer.parseInt(JOptionPane.showInputDialog(pComp, "Enter low product quantity value: ","QUANTITY VALUE",JOptionPane.OK_CANCEL_OPTION));
-        if (minQuantity != 0){
+        String rsp = JOptionPane.showInputDialog(pComp, "Enter the product quantity value: ","QUANTITY VALUE",JOptionPane.OK_OPTION);
+        if (rsp == null){
+            minQuantity = 0;
+            JOptionPane.showMessageDialog(pComp,"Please complete required instructions","INCOMPLETE REQUEST",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (rsp != null){
             try {
+                minQuantity = Integer.parseInt(rsp);
                 String sqlSt = "SELECT p.p_ProductName,p.p_Quantity,s.s_SupplierName FROM products p INNER JOIN suppliers s ON p.p_SupplierId = s.s_SupplierId WHERE p.p_Quantity <= ?";
                 PreparedStatement pst = con.prepareStatement(sqlSt);
                 pst.setInt(1,minQuantity);
